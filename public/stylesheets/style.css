@@ -1,0 +1,63 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+input,img{
+    outline: none;
+}
+.video-wrapper{
+    width: 1200px;
+    margin: 0 auto;
+}
+.video-wrapper .video-title{
+    text-align: center;
+    font-size: 24px;
+}
+
+.video-input{
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #d3d3d3;
+    margin: 30px auto;
+}
+
+.video-input span{
+    flex: 0 0 150px;
+}
+
+.video-input input{
+    flex: 1;
+}
+
+.video-click{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.video-click button{
+    display: inline-block;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: none;
+    background-color: #09f;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 20px ;
+}
+
+.video-tips{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    line-height: 600px;
+    text-align: center;
+    font-size: 18px;
+}
