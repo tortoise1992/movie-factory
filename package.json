@@ -17,5 +17,8 @@
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0",
     "superagent": "^3.5.2"
+  },
+  "devDependencies": {
+    "webpack": "^2.6.0"
   }
 }

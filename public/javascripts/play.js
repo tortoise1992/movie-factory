@@ -1,13 +1,16 @@
-/**
- * Created by Administrator on 2017/4/28.
- */
-$(function () {
-    var baseUrl="http://www.65yw.com/chaojikan.php?url=";
+import config from '../config/config'
+
+(function ($,window,config) {
+    var url=config.host+config.path+config.query;
     var videoUrl='';
     $('.video-click .ready').on('click',function () {
         var inputs=$('#originAddress').val();
+        if(/<|>/.test(inputs)){
+            alert('我去你妈的！');
+            return;
+        }
         if(inputs){
-            videoUrl=baseUrl+inputs;
+            videoUrl=url+inputs;
             $('.video-tips').hide();
             $('#video-play').attr('src',videoUrl);
         }else {
@@ -16,6 +19,10 @@ $(function () {
         }
     })
     $('.video-click .reset').on('click',function () {
+        if(/<|>/.test($('#originAddress').val())){
+            alert('我去你妈的！');
+            return;
+        }
         $('#originAddress').val('');
     })
-})
+})(jQuery,window,config)
