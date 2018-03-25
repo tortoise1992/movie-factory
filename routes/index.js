@@ -1,47 +1,37 @@
 var express = require('express');
 var router = express.Router();
+var mysql=require('mysql')
+var mysqlConfig=require('../config/config.js')
+var connection=mysql.createConnection(mysqlConfig.db)
+var size=8;
+console.log('数据库开始连接...')
+connection.connect()
+console.log('数据库连接成功')
+
+// function pageSearch(page,size){
+//   connection.query(`select * from movie_info limit ${(page-1)*size},${size}`,
+//   function(err,results,fields){
+//     if(err) console.log(err)
+//     console.log(results)
+//   })
+// }
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-const data = [
-  {
-    title: 'Title 1',
-    poster:"1",
-    address:"1",
-    content:"测试一下大量的描述啊啊啊啊啊啊啊啊啊啊啊啊啊啊"
-  },
-  {
-      title: 'Title 2',
-      poster:"2",
-      address:"2",
-      content:"测试一下大量的描述啊啊啊啊啊啊啊啊啊啊啊啊啊啊"
-    },
-    {
-      title: 'Title 3',
-      poster:"3",
-      address:"3",
-      content:"测试一下大量的描述啊啊啊啊啊啊啊啊啊啊啊啊啊啊"
-    },
-    {
-      title: 'Title 4',
-      poster:"4",
-      address:"4",
-      content:"测试一下大量的描述啊啊啊啊啊啊啊啊啊啊啊啊啊啊"
-    },
-    {
-      title: 'Title 5',
-      poster:"5",
-      address:"5",
-      content:"测试一下大量的描述啊啊啊啊啊啊啊啊啊啊啊啊啊啊"
-    },
-];
 
-router.get('/api/test', function(req, res, next) {
-  res.json({
-    data:data
+router.get('/api/movie',function(req,res,next){
+  var page=req.query.page
+  console.log(page)
+  connection.query(`select * from movie_info limit ${(page-1)*size},${size}`,
+  function(err,results,fields){
+    if(err) console.log(err)
+    var data={
+      code:200,
+      data:results
+    }
+    res.json(data)
   })
-});
-
+})
 module.exports = router;
